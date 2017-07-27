@@ -108,3 +108,7 @@ button#de{
     float: right;
     height: 86px;
 }
+
+button.button:active{
+    background: linear-gradient(to bottom, lightgrey 0, lightgray 100%);
+}
