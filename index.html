@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html style="background-color: #2f3945;">
+<html id="html" style="background-color: #2f3945;">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Calculator++</title>
@@ -9,16 +9,28 @@
         <link type="text/css" rel="stylesheet" href="styles/header.css">
         <link type="text/css" rel="stylesheet" href="styles/keyboard.css">  
         <link type="text/css" rel="stylesheet" href="styles/input.css">  
-        <link type="text/css" rel="stylesheet" href="styles/currency.css">
+        <link type="text/css" rel="stylesheet" href="styles/currency.css"> 
+        <link type="text/css" rel="stylesheet" href="styles/canvas.css">  
         <!-- import javascript functions -->
         <script type="text/javascript" src="scripts/cmd.js"></script>
         <script type="text/javascript" src="scripts/addAtCurPos.js"></script>
         <script type="text/javascript" src="scripts/addFunc.js"></script>
+        <script type="text/javascript" src="scripts/calculate.js"></script>
+        <script type="text/javascript" src="scripts/relatives.js"></script>
+        <script type="text/javascript" src="scripts/currency_converter.js"></script>
+        <script type="text/javascript" src="scripts/draw.js"></script>
         <script type="text/javascript" src="scripts/append.js"></script>
     </head>
 
     <body>
 
+        <div id="canvas" style="display: none">
+            <div id="return">
+                <button class="button" id="return" onclick="returncalc()">Return</button>
+            </div>
+            <canvas id='mycanvas'></canvas>
+        </div>
+        
         <div class="header">
             <img src="images/icon.png" width="70" height="70"/>
             <span>Calculator++</span>
@@ -35,7 +47,7 @@
 
             <div class="keyboard">
                 <div class="cmd">
-                    <button class="button" id="variable"  onclick="addAtCurPos(`x_`)"><strong>x_</strong></button>
+                    <button class="button" id="variable"  onclick="addAtCurPos(`x_`)"><strong>x</strong></button>
                     <button class="button" id="left_arrow" onclick="cur2left()">←</button>
                     <button class="button" id="right_arrow" onclick="cur2right()">→</button>
                     <button class="button" id="left_bracket" onclick="addAtCurPos(`(`)">(</button>
@@ -52,21 +64,35 @@
                             <div class="from">
                                 <span>From</span>
                                 <select id="from">
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
+                                    <option value="CNY">人民币（CNY）</option>
+                                    <option value="USD">美元（USD）</option>
+                                    <option value="EUR">欧元（EUR）</option>
+                                    <option value="GBP">英镑（GBP）</option>
+                                    <option value="INR">印度卢比（INR）</option>
+                                    <option value="AUD">澳大利亚元（AUD）</option>
+                                    <option value="CAD">加拿大元（CAD）</option>
+                                    <option value="SGD">新加坡元（SGD）</option>
+                                    <option value="JPY">日元（JPY）</option>
+                                    <option value="THB">泰铢（THB）</option>
+                                    <option value="KRW">韩元（KRW）</option>
+                                    <option value="ANG">荷兰盾（ANG）</option>
                                 </select>
                             </div>
                             <div class="to">
                                 <span>To</span>
                                 <select id="to">
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
-                                    <option value="RMB">人民币</option>
+                                    <option value="CNY">人民币（CNY）</option>
+                                    <option value="USD">美元（USD）</option>
+                                    <option value="EUR">欧元（EUR）</option>
+                                    <option value="GBP">英镑（GBP）</option>
+                                    <option value="INR">印度卢比（INR）</option>
+                                    <option value="AUD">澳大利亚元（AUD）</option>
+                                    <option value="CAD">加拿大元（CAD）</option>
+                                    <option value="SGD">新加坡元（SGD）</option>
+                                    <option value="JPY">日元（JPY）</option>
+                                    <option value="THB">泰铢（THB）</option>
+                                    <option value="KRW">韩元（KRW）</option>
+                                    <option value="ANG">荷兰盾（ANG）</option>
                                 </select>
                             </div>
                         </div>
@@ -128,7 +154,7 @@
                             </div>
                             <div class="lg-ln">
                                 <button class="button" id="lg" onclick="addFunc(`log(10,)`,1)">lg</button>
-                                <button class="button" id="ln" onclick="addFunc(`log(e,)`,1)">ln</button>
+                                <button class="button" id="ln" onclick="addFunc(`log((e),)`,1)">ln</button>
                             </div>
                         </div>
                         <div id="number">
@@ -148,7 +174,7 @@
                                 <button class="button" id="3" onclick="addAtCurPos(3)">3</button>
                             </div>
                             <div>
-                                <button class="button" id="0" onclick="addEle(0)">0</button>
+                                <button class="button" id="0" onclick="addAtCurPos(0)">0</button>
                                 <button class="button" id="point" onclick="addAtCurPos(`.`)">.</button>
                                 <button class="button" id="Ans" onclick="addAtCurPos(`Ans`)">Ans</button>
                             </div>
@@ -156,13 +182,13 @@
                         <div class="operator">
                             <div><button class="button" id="plus" onclick="addAtCurPos(`+`)"><strong>+</strong></button></div>
                             <div><button class="button" id="minus" onclick="addAtCurPos(`-`)"><strong>-</strong></button></div>
-                            <div><button class="button" id="times" onclick="addAtCurPos(`×`)"><strong>×</strong></button></div>
-                            <div><button class="button" id="divide" onclick="addAtCurPos(`÷`)"><strong>÷</strong></button></div>
+                            <div><button class="button" id="times" onclick="addAtCurPos(`*`)"><strong>×</strong></button></div>
+                            <div><button class="button" id="divide" onclick="addAtCurPos(`/`)"><strong>÷</strong></button></div>
                         </div>
                         <div class="append">
                             <div><button class="button" id="mode" onclick="mode()"><strong>mode</strong></button></div>
-                            <div><button class="button" id="plot"><strong>plot</strong></button></div>
-                            <div><button class="button" id="equal" onclick="calculate()">
+                            <div><button class="button" id="plot" onclick="plot()"><strong>plot</strong></button></div>
+                            <div><button class="button" id="equal" onclick="calc()">
                                 <p><strong>=</strong></p>
                                 <p>——</p>
                                 <p style="margin-top:3px"><strong>OK</strong></p>

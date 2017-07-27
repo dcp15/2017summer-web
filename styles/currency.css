@@ -22,6 +22,7 @@ div.from span,div.to span{
 }
 
 select{
+    outline: none;
     height: 40px;
     width: 250px;
     font-size: 15px;

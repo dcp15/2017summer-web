@@ -6,7 +6,7 @@ function mode(){
     status.innerText="mode selection";
 }
 
-function calculate(){
+function calc(){
     var input=document.getElementById("input");
     var curdiv=document.getElementById("currency_exchange");
     var status=document.getElementById("status");
@@ -17,7 +17,6 @@ function calculate(){
     var to=document.getElementById("to");
     
     input.placeholder="";
-
     if(status.innerText==="mode selection"){
         if(input.value==="1"){
             input.value="";
@@ -49,10 +48,36 @@ function calculate(){
             input.value="Illegal Value";
         }
     } else if(status.innerText==="Rad, scientific"){
-        //
+        input.value=calcandstore(input.value).toString();
     } else if(status.innerText==="kinship"){
-        //
+        input.value=relatives(input.value,1).toString();
     } else if(status.innerText==="currency exchange"){
-        //
+        input.value=currency_converter(from.value,to.value,input.value).toString();
     }
+}
+
+function plot(){
+    var input=document.getElementById("input");
+    var canv=document.getElementById("canvas");
+    var html=document.getElementById("html");
+    var calcdiv=document.getElementsByClassName("calc")[0];
+    var headerdiv=document.getElementsByClassName("header")[0];
+
+    html.style.backgroundColor="white";
+    calcdiv.style.display="none";
+    headerdiv.style.display="none";
+    canv.style.display="block";
+
+    draw(input.value);
+}
+
+function returncalc(){
+    var canv=document.getElementById("canvas");
+    var calcdiv=document.getElementsByClassName("calc")[0];
+    var headerdiv=document.getElementsByClassName("header")[0];
+
+    html.style.backgroundColor="#2f3945";
+    calcdiv.style.display="block";
+    headerdiv.style.display="block";
+    canv.style.display="none";
 }
