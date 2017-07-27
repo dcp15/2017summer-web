@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        
+
         <div class="header">
             <img src="images/icon.png" width="70" height="70"/>
             <span>Calculator++</span>
@@ -68,6 +68,27 @@
                                     <option value="RMB">人民币</option>
                                     <option value="RMB">人民币</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div id="relation" style="display: none">
+                            <div id="r1">
+                                <button class="button" id="Dad" onclick="addAtCurPos(`爸爸`)" active>爸爸</button>
+                                <button class="button" id="Mom" onclick="addAtCurPos(`妈妈`)">妈妈</button>
+                                <button class="button" id="son" onclick="addAtCurPos(`儿子`)">儿子</button>
+                            </div>
+                            <div id="r2">
+                                <button class="button" id="husband" onclick="addAtCurPos(`丈夫`)">丈夫</button>
+                                <button class="button" id="wife" onclick="addAtCurPos(`妻子`)">妻子</button>
+                                <button class="button" id="daughter" onclick="addAtCurPos(`女儿`)">女儿</button>
+                            </div>
+                            <div id="r3">
+                                <button class="button" id="big-brother" onclick="addAtCurPos(`哥哥`)">哥哥</button>
+                                <button class="button" id="little-brother" onclick="addAtCurPos(`弟弟`)">弟弟</button>
+                                <button class="button" id="de"  onclick="addAtCurPos(`的`)">的</button>
+                            </div>
+                            <div id="r4">
+                                <button class="button" id="big-sister" onclick="addAtCurPos(`姐姐`)">姐姐</button>
+                                <button class="button" id="little-sister" onclick="addAtCurPos(`妹妹`)">妹妹</button>
                             </div>
                         </div>
                         <div id="trig-func">
@@ -130,27 +151,6 @@
                                 <button class="button" id="0" onclick="addEle(0)">0</button>
                                 <button class="button" id="point" onclick="addAtCurPos(`.`)">.</button>
                                 <button class="button" id="Ans" onclick="addAtCurPos(`Ans`)">Ans</button>
-                            </div>
-                        </div>
-                        <div id="relation" style="display: none">
-                            <div id="r1">
-                                <button class="button" id="Dad" onclick="addAtCurPos(`爸爸`)" active>爸爸</button>
-                                <button class="button" id="Mom" onclick="addAtCurPos(`妈妈`)">妈妈</button>
-                                <button class="button" id="son" onclick="addAtCurPos(`儿子`)">儿子</button>
-                            </div>
-                            <div id="r2">
-                                <button class="button" id="husband" onclick="addAtCurPos(`丈夫`)">丈夫</button>
-                                <button class="button" id="wife" onclick="addAtCurPos(`妻子`)">妻子</button>
-                                <button class="button" id="daughter" onclick="addAtCurPos(`女儿`)">女儿</button>
-                            </div>
-                            <div id="r3">
-                                <button class="button" id="big-brother" onclick="addAtCurPos(`哥哥`)">哥哥</button>
-                                <button class="button" id="little-brother" onclick="addAtCurPos(`弟弟`)">弟弟</button>
-                                <button class="button" id="de"  onclick="addAtCurPos(`的`)">的</button>
-                            </div>
-                            <div id="r4">
-                                <button class="button" id="big-sister" onclick="addAtCurPos(`姐姐`)">姐姐</button>
-                                <button class="button" id="little-sister" onclick="addAtCurPos(`妹妹`)">妹妹</button>
                             </div>
                         </div>
                         <div class="operator">
