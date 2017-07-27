@@ -13,6 +13,7 @@
         <script type="text/javascript" src="scripts/cmd.js"></script>
         <script type="text/javascript" src="scripts/addAtCurPos.js"></script>
         <script type="text/javascript" src="scripts/addFunc.js"></script>
+        <script type="text/javascript" src="scripts/append.js"></script>
     </head>
 
     <body>
@@ -27,7 +28,7 @@
             <div class="input">
                 <p id="null"></p>
                 <p id="status">Rad, scientific</p>
-                <input id="input" type="text" autocomplete="off" autofocus="autofocus" value>
+                <input id="input" type="text" autocomplete="off" autofocus="autofocus" spellcheck="false" value>
             </div>
 
             <div class="keyboard">
@@ -45,47 +46,47 @@
 
                 <div class="center">
                     <div class="normal">
-                        <div class="trig-func">
+                        <div id="trig-func">
                             <div class="variable">
-                                <button id="pi" class="constant"><strong>π</strong></button>
-                                <button id="e" class="constant"><strong>e</strong></button>
-                                <button id="factorial">x!</button>
+                                <button id="pi" class="constant" onclick="addAtCurPos(`π`)"><strong>π</strong></button>
+                                <button id="e" class="constant" onclick="addAtCurPos(`e`)"><strong>e</strong></button>
+                                <button id="factorial" onclick="addFunc(`!()`,1)">x!</button>
                             </div>
                             <div class="sinclass">
-                                <button id="sin">sin</button>
-                                <button id="sinh">sinh</button>
-                                <button id="cot">cot</button>
+                                <button id="sin" onclick="addFunc(`sin()`,1)">sin</button>
+                                <button id="sinh" onclick="addFunc(`sinh()`,1)">sinh</button>
+                                <button id="cot" onclick="addFunc(`cot()`,1)">cot</button>
                             </div>
                             <div class="cosclass">
-                                <button id="cos">cos</button>
-                                <button id="cosh">cosh</button>
-                                <button id="sec">sec</button>
+                                <button id="cos" onclick="addFunc(`cos()`,1)">cos</button>
+                                <button id="cosh" onclick="addFunc(`cosh()`,1)">cosh</button>
+                                <button id="sec" onclick="addFunc(`sec()`,1)">sec</button>
                             </div>
                             <div class="tanclass">
-                                <button id="tan">tan</button>
-                                <button id="tanh">tanh</button>
-                                <button id="csc">csc</button>
+                                <button id="tan" onclick="addFunc(`tan()`,1)">tan</button>
+                                <button id="tanh" onclick="addFunc(`tanh()`,1)">tanh</button>
+                                <button id="csc" onclick="addFunc(`csc()`,1)">csc</button>
                             </div>
                         </div>
                         <div class="normal-func">
                             <div class="sqrt-exp">
-                                <button id="sqrt-y" title="y-th Root of Number x, sqrt(x, y)"><sup>y</sup>√x</button>
-                                <button id="exp-y"  title="Raise to Higher Power, x^y">x<sup>y</sup></button>
+                                <button id="sqrt-y" title="y-th Root of Number x, sqrt(x, y)"  onclick="addFunc(`sqrt(,)`,2)"><sup>y</sup>√x</button>
+                                <button id="exp-y"  title="Raise to Higher Power, x^y" onclick="addFunc(`exp(,)`,2)">x<sup>y</sup></button>
                             </div>
                             <div class="sqrt2-exp2">
-                                <button id="sqrt2">√x<sup></sup></button>
-                                <button id="exp2">x<sup>2</sup></button>
+                                <button id="sqrt2" onclick="addFunc(`sqrt(2,)`,1)">√x<sup></sup></button>
+                                <button id="exp2" onclick="addFunc(`exp(2,)`,1)">x<sup>2</sup></button>
                             </div>
                             <div class="log-1/x">
-                                <button id="log">log</button>
-                                <button id="1/x">1/x</button>
+                                <button id="log" onclick="addFunc(`log(,)`,2)">log</button>
+                                <button id="1/x" onclick="addFunc(`1/()`,1)">1/x</button>
                             </div>
                             <div class="lg-ln">
-                                <button id="lg">lg</button>
-                                <button id="ln">ln</button>
+                                <button id="lg" onclick="addFunc(`log(10,)`,1)">lg</button>
+                                <button id="ln" onclick="addFunc(`log(e,)`,1)">ln</button>
                             </div>
                         </div>
-                        <div class="number">
+                        <div id="number">
                             <div class="789">
                                 <button id="7" onclick="addAtCurPos(7)">7</button>
                                 <button id="8" onclick="addAtCurPos(8)">8</button>
@@ -107,37 +108,37 @@
                                 <button id="Ans" onclick="addAtCurPos(`Ans`)">Ans</button>
                             </div>
                         </div>
-                        <div class="relation" style="display: none">
+                        <div id="relation" style="display: none">
                             <div id="r1">
-                                <button id="Dad" onclick="addAtCurPos(爸爸)">爸爸</button>
-                                <button id="Mom" onclick="addAtCurPos(妈妈)">妈妈</button>
-                                <button id="son" onclick="addAtCurPos(儿子)">儿子</button>
+                                <button id="Dad" onclick="addAtCurPos(`爸爸`)" active>爸爸</button>
+                                <button id="Mom" onclick="addAtCurPos(`妈妈`)">妈妈</button>
+                                <button id="son" onclick="addAtCurPos(`儿子`)">儿子</button>
                             </div>
                             <div id="r2">
-                                <button id="husband" onclick="addAtCurPos(丈夫)">丈夫</button>
-                                <button id="wife" onclick="addAtCurPos(妻子)">妻子</button>
-                                <button id="daughter" onclick="addAtCurPos(女儿)">女儿</button>
+                                <button id="husband" onclick="addAtCurPos(`丈夫`)">丈夫</button>
+                                <button id="wife" onclick="addAtCurPos(`妻子`)">妻子</button>
+                                <button id="daughter" onclick="addAtCurPos(`女儿`)">女儿</button>
                             </div>
                             <div id="r3">
-                                <button id="big-brother" onclick="addAtCurPos(哥哥)">哥哥</button>
-                                <button id="little-brother" onclick="addAtCurPos(弟弟)">弟弟</button>
-                                <button id="de"  onclick="addAtCurPos(的)">的</button>
+                                <button id="big-brother" onclick="addAtCurPos(`哥哥`)">哥哥</button>
+                                <button id="little-brother" onclick="addAtCurPos(`弟弟`)">弟弟</button>
+                                <button id="de"  onclick="addAtCurPos(`的`)">的</button>
                             </div>
                             <div id="r4">
-                                <button id="big-sister" onclick="addAtCurPos(姐姐)">姐姐</button>
-                                <button id="little-sister" onclick="addAtCurPos(妹妹)">妹妹</button>
+                                <button id="big-sister" onclick="addAtCurPos(`姐姐`)">姐姐</button>
+                                <button id="little-sister" onclick="addAtCurPos(`妹妹`)">妹妹</button>
                             </div>
                         </div>
                         <div class="operator">
                             <div><button id="plus" onclick="addAtCurPos(`+`)"><strong>+</strong></button></div>
-                            <div><button id="-" onclick="addAtCurPos(`-`)"><strong>-</strong></button></div>
+                            <div><button id="minus" onclick="addAtCurPos(`-`)"><strong>-</strong></button></div>
                             <div><button id="times" onclick="addAtCurPos(`×`)"><strong>×</strong></button></div>
                             <div><button id="divide" onclick="addAtCurPos(`÷`)"><strong>÷</strong></button></div>
                         </div>
                         <div class="append">
-                            <div><button id="mode"><strong>mode</strong></button></div>
+                            <div><button id="mode" onclick="mode()"><strong>mode</strong></button></div>
                             <div><button id="plot"><strong>plot</strong></button></div>
-                            <div><button id="equal">
+                            <div><button id="equal" onclick="calculate()">
                                 <p><strong>=</strong></p>
                                 <p>——</p>
                                 <p style="margin-top:3px"><strong>OK</strong></p>

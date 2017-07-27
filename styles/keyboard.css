@@ -1,3 +1,11 @@
+button{
+    outline: none;
+} 
+
+button:active{
+    display: none;
+}
+
 div.calc{
     margin: auto;
     width: 650px;

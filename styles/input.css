@@ -22,6 +22,7 @@ p#status{
 }
 
 input#input{
+    outline: none;
     margin-top: 3px;
     color: #000;
     width: 566px;
