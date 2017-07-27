@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html style="background-color: #2f3945;">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Calculator++</title>
+        <link rel="icon" href="images/icon.png" sizes="32x32" type="image/png">
+        <!-- import css styles -->
+        <link type="text/css" rel="stylesheet" href="styles/header.css">
+        <link type="text/css" rel="stylesheet" href="styles/keyboard.css">  
+        <link type="text/css" rel="stylesheet" href="styles/input.css">
+        <!-- import javascript functions -->
+        <script type="text/javascript" src="scripts/cmd.js"></script>
+        <script type="text/javascript" src="scripts/addAtCurPos.js"></script>
+        <script type="text/javascript" src="scripts/addFunc.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <img src="images/icon.png" width="70" height="70"/>
+            <span>Calculator++</span>
+            <span id="author">Author: gaof & dcp</span>
+        </div>
+
+        <div class="calc">
+
+            <div class="input">
+                <p id="null"></p>
+                <p id="status">Rad, scientific</p>
+                <input id="input" type="text" autocomplete="off" autofocus="autofocus" value>
+            </div>
+
+            <div class="keyboard">
+                <div class="cmd">
+                    <button id="variable"  onclick="addAtCurPos(`x_`)"><strong>x_</strong></button>
+                    <button id="left-arrow" onclick="cur2left()">←</button>
+                    <button id="right-arrow" onclick="cur2right()">→</button>
+                    <button id="left-bracket" onclick="addAtCurPos(`(`)">(</button>
+                    <button id="comma" onclick="addAtCurPos(`,`)">,</button>                    
+                    <button id="right-bracket" onclick="addAtCurPos(`)`)">)</button>
+                    <button id="percent" onclick="addAtCurPos(`%`)">%</button>
+                    <button id="del" onclick="Delete()">DEL</button>
+                    <button id="AC" onclick="Clear()">AC</button>
+                </div>
+
+                <div class="center">
+                    <div class="normal">
+                        <div class="trig-func">
+                            <div class="variable">
+                                <button id="pi" class="constant"><strong>π</strong></button>
+                                <button id="e" class="constant"><strong>e</strong></button>
+                                <button id="factorial">x!</button>
+                            </div>
+                            <div class="sinclass">
+                                <button id="sin">sin</button>
+                                <button id="sinh">sinh</button>
+                                <button id="cot">cot</button>
+                            </div>
+                            <div class="cosclass">
+                                <button id="cos">cos</button>
+                                <button id="cosh">cosh</button>
+                                <button id="sec">sec</button>
+                            </div>
+                            <div class="tanclass">
+                                <button id="tan">tan</button>
+                                <button id="tanh">tanh</button>
+                                <button id="csc">csc</button>
+                            </div>
+                        </div>
+                        <div class="normal-func">
+                            <div class="sqrt-exp">
+                                <button id="sqrt-y" title="y-th Root of Number x, sqrt(x, y)"><sup>y</sup>√x</button>
+                                <button id="exp-y"  title="Raise to Higher Power, x^y">x<sup>y</sup></button>
+                            </div>
+                            <div class="sqrt2-exp2">
+                                <button id="sqrt2">√x<sup></sup></button>
+                                <button id="exp2">x<sup>2</sup></button>
+                            </div>
+                            <div class="log-1/x">
+                                <button id="log">log</button>
+                                <button id="1/x">1/x</button>
+                            </div>
+                            <div class="lg-ln">
+                                <button id="lg">lg</button>
+                                <button id="ln">ln</button>
+                            </div>
+                        </div>
+                        <div class="number">
+                            <div class="789">
+                                <button id="7" onclick="addAtCurPos(7)">7</button>
+                                <button id="8" onclick="addAtCurPos(8)">8</button>
+                                <button id="9" onclick="addAtCurPos(9)">9</button>
+                            </div>
+                            <div class="456">
+                                <button id="4" onclick="addAtCurPos(4)">4</button>
+                                <button id="5" onclick="addAtCurPos(5)">5</button>
+                                <button id="6" onclick="addAtCurPos(6)">6</button>
+                            </div>
+                            <div class="123">
+                                <button id="1" onclick="addAtCurPos(1)">1</button>
+                                <button id="2" onclick="addAtCurPos(2)">2</button>
+                                <button id="3" onclick="addAtCurPos(3)">3</button>
+                            </div>
+                            <div>
+                                <button id="0" onclick="addEle(0)">0</button>
+                                <button id="point" onclick="addAtCurPos(`.`)">.</button>
+                                <button id="Ans" onclick="addAtCurPos(`Ans`)">Ans</button>
+                            </div>
+                        </div>
+                        <div class="relation" style="display: none">
+                            <div id="r1">
+                                <button id="Dad" onclick="addAtCurPos(爸爸)">爸爸</button>
+                                <button id="Mom" onclick="addAtCurPos(妈妈)">妈妈</button>
+                                <button id="son" onclick="addAtCurPos(儿子)">儿子</button>
+                            </div>
+                            <div id="r2">
+                                <button id="husband" onclick="addAtCurPos(丈夫)">丈夫</button>
+                                <button id="wife" onclick="addAtCurPos(妻子)">妻子</button>
+                                <button id="daughter" onclick="addAtCurPos(女儿)">女儿</button>
+                            </div>
+                            <div id="r3">
+                                <button id="big-brother" onclick="addAtCurPos(哥哥)">哥哥</button>
+                                <button id="little-brother" onclick="addAtCurPos(弟弟)">弟弟</button>
+                                <button id="de"  onclick="addAtCurPos(的)">的</button>
+                            </div>
+                            <div id="r4">
+                                <button id="big-sister" onclick="addAtCurPos(姐姐)">姐姐</button>
+                                <button id="little-sister" onclick="addAtCurPos(妹妹)">妹妹</button>
+                            </div>
+                        </div>
+                        <div class="operator">
+                            <div><button id="plus" onclick="addAtCurPos(`+`)"><strong>+</strong></button></div>
+                            <div><button id="-" onclick="addAtCurPos(`-`)"><strong>-</strong></button></div>
+                            <div><button id="times" onclick="addAtCurPos(`×`)"><strong>×</strong></button></div>
+                            <div><button id="divide" onclick="addAtCurPos(`÷`)"><strong>÷</strong></button></div>
+                        </div>
+                        <div class="append">
+                            <div><button id="mode"><strong>mode</strong></button></div>
+                            <div><button id="plot"><strong>plot</strong></button></div>
+                            <div><button id="equal">
+                                <p><strong>=</strong></p>
+                                <p>——</p>
+                                <p style="margin-top:3px"><strong>OK</strong></p>
+                            </button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
